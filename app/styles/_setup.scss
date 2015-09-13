@@ -1,0 +1,30 @@
+@font-face {
+	font-family: 'BloggerSans';
+	src: url('../fonts/BloggerSans.otf'); /* IE */
+}
+@font-face {
+	font-family: 'BloggerSans-bold';
+	src: url('../fonts/BloggerSans-bold.ttf') format("truetype"); /*others*/
+}
+/* выбор цвета выделения текста */
+/**::selection {
+	background: #000000;
+}*/
+
+*{
+	font-size: 0;
+}
+
+@import "../../dist/plugins/scut/dist/scut";
+@include scut-reset();
+
+ul,ol,li,dl,dt,dd,p{
+	margin: 0;
+	padding: 0;
+	font-weight: 100;
+}
+
+html {
+	font-size: 10px;
+	min-height: 100%;
+}

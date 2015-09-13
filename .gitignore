@@ -1,0 +1,16 @@
+.idea
+.tmp
+.sass-cache
+ogorod.sublime*
+
+test/bower_components
+node_modules
+
+bower_components
+
+*.7z
+*.zip
+*.rar
+
+*.css
+*.html

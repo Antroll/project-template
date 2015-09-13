@@ -1,0 +1,9 @@
+*.7z
+*.zip
+*.rar
+
+*.css
+*.html
+scripts
+styles
+plugins
