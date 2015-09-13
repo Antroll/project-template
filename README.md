@@ -1,5 +1,5 @@
 # Ogorodnikov
-Десктопная версия сайта **[ogorodnikov.com](#)**
+Десктопная версия сайта **[site.com](#)**
 
 #### Установка
 Необходимо глобально установить Gulp и Bower:
@@ -9,8 +9,8 @@ $ npm install -g gulp bower
 ```
 
 ```sh
-$ git clone git@gitlab.com:olival888/exit.git
-$ cd ogorodnikov
+$ git clone git@gitlab.com:Antroll/new-project.git
+$ cd new-project
 $ npm install && bower install
 ```
 
@@ -20,4 +20,4 @@ $ npm install && bower install
 $ gulp serve
 ```
 
-Исходники проекта содержаться в папке **ogorodnikov/app**
+Исходники проекта содержаться в папке **project/dist**
