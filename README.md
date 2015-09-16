@@ -1,8 +1,21 @@
-# Ogorodnikov
+# new-project
 Десктопная версия сайта **[site.com](#)**
 
 #### Установка
-Необходимо глобально установить Gulp и Bower:
+Для работы со сборкой проэкта необходимы установленные **[node.js](https://nodejs.org/en/)**  и **[ruby](https://www.ruby-lang.org/ru/)**
+Так же должны быть установлены 
+
+jade: 
+```sh
+$ npm install jade --global
+```
+
+sass:
+```sh
+$ gem install sass
+```
+
+Gulp и Bower:
 
 ```sh
 $ npm install -g gulp bower
