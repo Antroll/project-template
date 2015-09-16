@@ -1,11 +1,9 @@
 .idea
 .tmp
 .sass-cache
-ogorod.sublime*
+*.sublime*
 
-test/bower_components
 node_modules
-
 bower_components
 
 *.7z
