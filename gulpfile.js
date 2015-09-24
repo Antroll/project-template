@@ -49,21 +49,7 @@ gulp.task('views', function () {
 });
 
 gulp.task('styles', function () {
-	//return gulp.src('app/styles/**/*.scss')
-		/*//only pass unchanged *main* files and *all* the partials
-		//.pipe($.changed('dist/styles', {extension: '.css'}))
-		//filter out unchanged scss files, only works when watching
-		.pipe($.if(browserSync.active, $.cached('scss')))
 
-		//find files that depend on the files that have changed
-		.pipe($.sassInheritance({dir: 'app/styles/'}))
-
-		//filter out internal imports (folders and files starting with "_" )
-		.pipe($.filter(function (file) {
-			return !/\_/.test(file.path) || !/^_/.test(file.relative);
-		}))*/
-
-		//.pipe($.sourcemaps.init())
 		$.rubySass('app/styles', {
 			style: 'expanded',
 			precision: 10,
@@ -82,6 +68,9 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
 	return gulp.src(['app/scripts/**/*.js','!app/scripts/modernizr/modernizr.custom.js'])
+		.pipe($.filter(function (file) {
+			return !/\_/.test(file.path) && !/^_/.test(file.relative);
+		}))
 		.pipe($.plumber())
 		.pipe($.sourcemaps.init())
 		.pipe($.babel())
@@ -89,29 +78,6 @@ gulp.task('scripts', function () {
 		.pipe(gulp.dest('dist/scripts'));
 });
 
-/*gulp.task('sprites', function () {
-	return gulp.src('app/images/svg/sprites/!*svg')
-		.pipe($.imagemin({
-			plugins: [
-				{cleanupIDs: false}
-			]
-		}))
-		.pipe($.svgstore({ inlineSvg: true }))
-		.pipe(gulp.dest('dist/images/svg'));
-});
-
-gulp.task('icons', function () {
-	return gulp.src('app/images/svg/icons/*.svg')
-		.pipe($.imagemin({
-			plugins: [
-				{cleanupIDs: false}
-			]
-		}))
-		.pipe(gulp.dest('dist/images/svg/icons'));
-});
-
-gulp.task('svg', $.sync(gulp).async(['sprites','icons']));
-*/
 gulp.task('jshint', function () {
 	return gulp.src('app/scripts/**/*.js')
 		.pipe($.plumber())
@@ -119,9 +85,6 @@ gulp.task('jshint', function () {
 		.pipe($.jshint.reporter('jshint-stylish'))
 		.pipe($.jshint.reporter('fail'));
 });
-
-/*require('postcss-svg/lib/reload.js')(require);
-var postcssInlineSVG = require('postcss-svg');*/
 
 gulp.task('useref', function () {
 	var assets = $.useref.assets({searchPath: ['dist',"app","."]});
