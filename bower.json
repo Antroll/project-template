@@ -2,7 +2,6 @@
   "name": "ogorodnikov",
   "private": true,
   "dependencies": {
-  	"scut": "*",
   	"jquery": "1.11.3",
     "normalize-css": "*"
   }

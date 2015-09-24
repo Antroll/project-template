@@ -11,15 +11,11 @@ var browserSyncConfig={
 	startPath: "/",
 	server: {
 		baseDir: ['dist', 'app']
-		/*routes: {
-			'/bower_components': 'bower_components'
-		}*/
 	}
 };
 
 var jadeData = require('./data.json');
 
-//вставить условие, чтобы писались только нужные файлы, без _
 gulp.task('views', function () {
 	return gulp.src(['app/tamplates/**/*.jade'])
 		.pipe($.plumber())
@@ -86,61 +82,6 @@ gulp.task('jshint', function () {
 		.pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('useref', function () {
-	var assets = $.useref.assets({searchPath: ['dist',"app","."]});
-
-	//postcssInlineSVG = require.reload('postcss-svg');
-
-
-	return gulp.src('dist/*.html')
-		.pipe(assets)
-		.pipe($.if('*.css', $.postcss([
-			require('csswring')()
-		])))
-		.pipe($.if('*.js', $.uglify()))
-		.pipe(assets.restore())
-		.pipe($.if('*.css', $.postcss([
-			//попробывать переделать относительные пути в абсолютные
-			require('postcss-url')({url: "inline"})
-			/*,
-			postcssInlineSVG({
-			      paths: ['app'],
-			      debug: true,
-			      svgo: true,
-			      ei: false
-			    })*/
-		])))
-		.pipe($.useref())
-		//.pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
-		.pipe(gulp.dest('dist'));
-});
-
-
-
-gulp.task('img-min', function () {
-	return gulp.src(['app/images/**/*.{jpg,png}',"!app/images/media/**/*","!app/images/favicons/**/*"])
-		.pipe($.imagemin({progressive: true,interlaced: true}))
-		.pipe(gulp.dest('dist/images'));
-});
-
-gulp.task('images', function () {
-	return gulp.src("dist/images/**/*.*")
-		.pipe(gulp.dest("dist/images"));
-});
-
-gulp.task('extras', function () {
-	return gulp.src([
-		'app/*.*',
-		'!app/*.jade'
-	], {
-		dot: true
-	}).pipe(gulp.dest('dist'));
-});
-
-gulp.task('clean', require('del').bind(null, ['dist', 'dist']));
-
-
-// inject bower components
 gulp.task('wiredep', function () {
 	var wiredep = require('wiredep').stream;
 
@@ -173,4 +114,10 @@ gulp.task('serve', $.sync(gulp).sync([['views', 'styles', 'scripts']]), function
 
 gulp.task('watch', function () {
 	gulp.start('serve');
+});
+
+gulp.task('minify-css', function() {
+  return gulp.src('dist/styles/*.css')
+    .pipe($.minifyCss({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dist/styles/min'));
 });

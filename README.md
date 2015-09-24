@@ -20,11 +20,12 @@ Gulp и Bower:
 ```sh
 $ npm install -g gulp bower
 ```
-
+#### Готовим проект
 ```sh
 $ git clone git@gitlab.com:Antroll/new-project.git
 $ cd new-project
-$ npm install && bower install
+$ npm i
+$ bower i
 ```
 
 Для просмотра проекта:
