@@ -1,9 +1,9 @@
 {
-  "name": "ogorodnikov",
-  "version": "0.0.0",
+  "name": "project",
+  "version": "0.1",
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer-core": "*",
+    "autoprefixer": "*",
     "browser-sync": "*",
     "csswring": "*",
     "del": "*",
