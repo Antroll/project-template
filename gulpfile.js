@@ -119,5 +119,6 @@ gulp.task('watch', function () {
 gulp.task('minify-css', function() {
   return gulp.src('dist/styles/*.css')
     .pipe($.minifyCss({compatibility: 'ie8'}))
-    .pipe(gulp.dest('dist/styles/min'));
+    .pipe($.rename({suffix: '.min'}))
+    .pipe(gulp.dest('dist/styles'));
 });
