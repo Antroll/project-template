@@ -1,8 +1,11 @@
 {
-  "name": "ogorodnikov",
-  "private": true,
-  "dependencies": {
-  	"jquery": "1.11.3",
-    "normalize-css": "*"
-  }
+	"name": "ogorodnikov",
+	"private": true,
+	"dependencies": {
+		"fontawesome": "*",
+		"bootstrap-sass": "*",
+		"slick.js": "*",
+		"fancyBox": "*",
+		"jquery": "1.11.3"
+	}
 }

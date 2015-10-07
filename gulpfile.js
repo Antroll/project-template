@@ -116,7 +116,7 @@ gulp.task('watch', function () {
 	gulp.start('serve');
 });
 
-gulp.task('minify-css', function() {
+gulp.task('min-css', function() {
   return gulp.src('dist/styles/*.css')
     .pipe($.minifyCss({compatibility: 'ie8'}))
     .pipe($.rename({suffix: '.min'}))

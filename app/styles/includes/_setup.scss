@@ -6,10 +6,14 @@
 	font-family: 'BloggerSans-bold';
 	src: url('../fonts/BloggerSans-bold.ttf') format("truetype"); /*others*/
 }
-/* выбор цвета выделения текста */
-/**::selection {
-	background: #000000;
-}*/
+
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+input:focus,textarea:focus, button:focus {
+	outline: none;
+}
 
 ul,ol,li,dl,dt,dd,p{
 	margin: 0;
@@ -18,6 +22,5 @@ ul,ol,li,dl,dt,dd,p{
 }
 
 html {
-	font-size: 10px;
 	min-height: 100%;
 }
