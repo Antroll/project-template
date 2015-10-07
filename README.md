@@ -22,7 +22,7 @@ $ npm install -g gulp bower
 ```
 #### Готовим проект
 ```sh
-$ git clone git@gitlab.com:Antroll/new-project.git
+$ git clone https://gitlab.com/Antroll/new-project.git
 $ cd new-project
 $ npm i
 $ bower i
