@@ -1,6 +1,7 @@
 extends _layout
 block content
 	.container
-		.row
-			.col-xs-12
-				h1 Hello world!
+		h1 Hello world!
+		.parent
+			.block(data-tooltip="some block")
+				+checkbox(class="checkbox")

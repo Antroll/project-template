@@ -1,0 +1,9 @@
+mixin checkbox(labelText, type)
+	if type
+		label(class!=attributes.class)
+			input.hidden(type="radio", name="name")
+			span=labelText
+	else
+		label(class!=attributes.class)
+			input.hidden(type="checkbox")
+			span=labelText

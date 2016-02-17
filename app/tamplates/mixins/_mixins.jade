@@ -1,6 +1,10 @@
+include _checkbox
+
 mixin random(num1, num2)
 	- var num = Math.floor(Math.random() * (num1 - num2) + num2)
 	span=num
 
 mixin br(count)
 	div(style="height:"+count+"px;")
+		if block
+			block

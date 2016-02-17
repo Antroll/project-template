@@ -1,5 +1,18 @@
 /* index */
+.parent{
+	@include verticalize;
+	background: #BEBEBE;
+	height: 500px;
+}
 .block{
-	display: block;
+	@include hui_tooltip(attr(data-tooltip), 'top', red);
+	display: inline-block;
+	vertical-align: middle;
+	width: 400px;
+	height: 100px;
+	background: white;
+}
+.checkbox{
+	@include checkbox();
 }
 /* .index */

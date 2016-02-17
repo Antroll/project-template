@@ -1,0 +1,72 @@
+@mixin triangle($direction, $size: 6px, $color: #222){
+	content: '';
+	display: block;
+	position: absolute;
+	height: 0; width: 0;
+	@if ($direction == 'up'){
+		border-bottom: $size solid $color;
+		border-left: 1/2*$size solid transparent;
+		border-right: 1/2*$size solid transparent;
+	}
+	@else if ($direction == 'down'){
+		border-top: $size solid $color;
+		border-left: 1/2*$size solid transparent;
+		border-right: 1/2*$size solid transparent;
+	}
+	@else if ($direction == 'left'){
+		border-top: 1/2*$size solid transparent;
+		border-bottom: 1/2*$size solid transparent;
+		border-right: $size solid $color;
+	}
+	@else if ($direction == 'right'){
+		border-top: 1/2*$size solid transparent;
+		border-bottom: 1/2*$size solid transparent;
+		border-left: $size solid $color;
+	}
+}
+@mixin hui_tooltip($content: attr(data-tooltip), $direction: top, $color: #222) {
+  position: relative;
+  &:before, &:after {
+    display: none;
+    z-index: 98;
+  }
+  &:hover {
+    &:after { // for text bubble
+      content: $content;
+      display: block;
+      position: absolute;
+      box-sizing: content-box;
+      height: 12px; // (makes total height including padding 22px)
+      padding: 6px;
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
+      color: #fff;
+      text-shadow: 1px 1px 0 #000;
+      background-color: $color;
+    }
+    @if ($direction == 'top'){
+      &:before {
+        @include triangle(down, 6px, $color);
+        top: -6px; margin-top: 0;
+        left: 47%;
+      }
+      &:after {
+        top: -28px;
+        left: 47%; margin-left: -20px;
+      }
+    }
+    @else if ($direction == 'bottom'){
+      &:before {
+        @include triangle(up, 6px, $color);
+        top: auto; margin-top: 0;
+        bottom: -6px;
+        left: 47%;
+      }
+      &:after {
+        bottom: -28px;
+        left: 47%; margin-left: -20px;
+      }
+    }
+  }
+}

@@ -12,16 +12,18 @@ $(document).ready(function () {
 
 	$('<ol id="pages2342"></ol>').prependTo('body').css({
 		'position': 'fixed',
-		'left': -210, 'top': '5%',
+		'left': -210, 'top': '20%',
 		'width': 220,
+		'max-height': '60%',
+		'overflow': 'scroll',
 		'margin': 0,
-		'padding': '10px 20px 10px 40px',
+		'padding': '20px',
 		'background': bgColor,
-		'zIndex': 54512, 'fontSize': 12,
+		'zIndex': 54512, 'fontSize': 14,
 		'color': textColor,
 		'fontFamily': 'Arial, sans-serif',
 		'lineHeight': '20px',
-		'opacity': '0.6',
+		'opacity': '0.2',
 	});
 
 	for (var i = 0; i < arrPage.length; i++) {
@@ -33,7 +35,9 @@ $(document).ready(function () {
 	});
 
 	$('#pages2342 a').css({
-		'fontSize': 12,
+		'display': 'inline-block',
+		'width': '100%',
+		'fontSize': 14,
 		'color': textColor,
 		'text-decoration': 'none'
 	});
@@ -42,12 +46,18 @@ $(document).ready(function () {
 		'fontWeight': 'bold',
 		'listStyle': 'none',
 		'textAlign': 'center'
-	}).find('a').attr('href', '#');
+	})
+	.find('a')
+	.attr('href', '#')
+	.css({
+		'width': 'auto'
+	});
 
 	$('<li><b id="arrow">&raquo;</b></li>').appendTo('#pages2342').css({
 		'position': 'absolute',
 		'top': '50%', 'right': 2,
 		'height': 12,
+		'margin-top': -12,
 		'listStyle': 'none'
 	});
 
@@ -55,7 +65,7 @@ $(document).ready(function () {
 	$('#pages2342').hover(function () {
 		$(this).css({ 'left': 0, 'opacity': '1' });
 	}, function () {
-		$(this).css({ 'left': -210, 'opacity': '0.6' });
+		$(this).css({ 'left': -210, 'opacity': '0.2' });
 	});
 	$('#pages2342 a').hover(function () {
 		$(this).css('color', 'orange');

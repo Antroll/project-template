@@ -1,0 +1,45 @@
+@import "mixins/rem.mixin";
+@import "mixins/tooltips.mixin";
+@import "mixins/clicker.mixin";
+@import "mixins/verticalize.mixin";
+@import "mixins/checkbox.mixin";
+
+
+
+@mixin user-select($none){
+	-webkit-user-select: $none;
+	-moz-user-select: $none;
+	-ms-user-select: $none;
+	-o-user-select: $none;
+	user-select: $none;
+}
+
+
+
+@mixin col-width($grid-columns) {
+	width: percentage(($grid-columns / 12));
+}
+@mixin make-col($gutter: 20px) {
+	float: left;
+	min-height: 1px;
+	padding-left: ($gutter / 2);
+	padding-right: ($gutter / 2);
+}
+@mixin make-dib-col($gutter: 20px) {
+	display: inline-block;
+	vertical-align: top;
+	min-height: 1px;
+	padding-left: ($gutter / 2);
+	padding-right: ($gutter / 2);
+}
+
+%clearfix {
+  *zoom: 1;
+  &:after {
+    content: '';
+    display: table;
+    line-height: 0;
+    clear: both;
+  }
+}
+
