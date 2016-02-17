@@ -1,23 +1,34 @@
+include _mixins
+
+- var href = 'javascript:void(0)';
+block vars
+
 doctype html
 html.no-js
 	head
 		meta(charset='utf-8')
-		title site
+		title Site name
 		meta(name='description' content='')
 		meta(name='viewport' content='width=device-width, initial-scale=1')
+		link(rel="shortcut icon" href="favicon.ico" type="image/x-icon")
+		link(rel="icon" href="favicon.ico" type="image/x-icon")
 
-		block script
 		link(rel='stylesheet', href='styles/style.css')
-
 		block style
-	body
-		header
+		block script
+	body(style="min-height: 100vh;")
+		#preloader
+			#status
+		include blocks/_header
 
+		main
 			block content
 
-		footer
+		include blocks/_footer
 
-		script(src="plugins/jquery/dist/jquery.min.js")
-		script(src="scripts/delete_me.js")
+		script(src="plugins/jquery/jquery.min.js")
+		script(src="plugins/jquery.dotdotdot.min.js")
+		script(src="plugins/phone-mask.js")
+		script(src="scripts/delete-me.js")
 		script(src="scripts/main.js")
 		block scripts

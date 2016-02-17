@@ -1,12 +1,12 @@
+@import "includes/bootstrap";
+@import "includes/preloader";
 @import "includes/vars";
 @import "includes/mixins";
+@import "includes/mixins";
+
 @import "includes/setup";
+@import "includes/helpers";
 
 @import "typography";
 @import "layout";
 @import "index";
-
-/*
-@import "placeholders/breadcrumbs";
-@import "placeholders/paginator";
-*/

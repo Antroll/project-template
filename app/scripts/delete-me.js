@@ -3,7 +3,7 @@
 $(document).ready(function () {
 	var arrPage = [
 		{ label: 'Главная', value: 'index' },
-		{ label: 'Тестовая', value: 'test' },
+		{ label: 'test', value: 'test' },
 
 		{ label: 'Вверх', value: '#' }
 	];

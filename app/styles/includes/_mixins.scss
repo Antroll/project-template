@@ -1,7 +1,98 @@
+@function parseInt($n) { /* 2 */
+	@return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+	$px : (); /* 3 */
+	$rem: (); /* 3 */
+
+	@each $value in $values { /* 4 */
+
+		@if $value == 0 or $value == auto { /* 5 */
+			$px : append($px , $value);
+			$rem: append($rem, $value);
+		}
+
+		@else {
+			$unit: unit($value);    /* 6 */
+			$val: parseInt($value); /* 6 */
+
+			@if $unit == "px" {  /* 7 */
+				$px : append($px,  $value);
+				$rem: append($rem, ($val / 10 + rem));
+			}
+
+			@if $unit == "rem" { /* 7 */
+				$px : append($px,  ($val * 10 + px));
+				$rem: append($rem, $value);
+			}
+		}
+	}
+
+	@if $px == $rem {     /* 8 */
+		#{$property}: $px;  /* 9 */
+	} @else {
+		#{$property}: $px;  /* 9 */
+		#{$property}: $rem; /* 9 */
+	}
+}
+
 @mixin user-select($none){
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	-o-user-select: none;
-	user-select: none;
+	-webkit-user-select: $none;
+	-moz-user-select: $none;
+	-ms-user-select: $none;
+	-o-user-select: $none;
+	user-select: $none;
+}
+@mixin btn-clicker($color) {
+	&:hover{ background-color: lighten($color, 5%); }
+	&:active{ background-color: darken($color, 5%); }
+}
+@mixin link-clicker() {
+	&:active{
+		position: relative;
+		top: 1px;
+		cursor: pointer;
+	}
+}
+
+@mixin checkbox() {
+	&:before{
+		content: '';
+		display: inline-block;
+		vertical-align: middle;
+		height: 20px;
+		width: 20px;
+		margin-top: -3px;
+		margin-right: 10px;
+		border-radius: $radius;
+		background-color: #d7dcde;
+		color: transparent;
+		font-family: FontAwesome;
+		text-align: center;
+		line-height: 20px;
+		transition: color 0.2s;
+	}
+	&:hover{
+		&:before{
+			content: '\f00c';
+			color: white;
+		}
+	}
+}
+@mixin col-width($grid-columns) {
+	width: percentage(($grid-columns / 12));
+}
+@mixin make-col($gutter: $grid-gutter-width) {
+	float: left;
+	min-height: 1px;
+	padding-left: ($gutter / 2);
+	padding-right: ($gutter / 2);
+}
+@mixin make-dib-col($gutter: $grid-gutter-width) {
+	display: inline-block;
+	vertical-align: top;
+	min-height: 1px;
+	padding-left: ($gutter / 2);
+	padding-right: ($gutter / 2);
 }

@@ -3,7 +3,6 @@
 	"private": true,
 	"dependencies": {
 		"fontawesome": "*",
-		"bootstrap-sass": "*",
 		"slick.js": "*",
 		"fancyBox": "*",
 		"jquery": "1.11.3"

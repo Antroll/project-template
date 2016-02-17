@@ -1,0 +1,21 @@
+/* helpers */
+.text{
+	&-left{ text-align: left; }
+	&-right{ text-align: right; }
+	&-center{ text-align: center; }
+}
+.dib{display: inline-block;}
+.rel{position: relative;}
+
+%btn-style{
+	@include link-clicker;
+	display: inline-block;
+	border: none;
+	border-radius: $radius;
+	font-size: 12px;
+    padding: 10px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+/* helpers */
