@@ -15,7 +15,7 @@ $(document).ready(function () {
 		'left': -210, 'top': '20%',
 		'width': 220,
 		'max-height': '60%',
-		'overflow': 'scroll',
+		'overflow': 'auto',
 		'margin': 0,
 		'padding': '20px',
 		'background': bgColor,
