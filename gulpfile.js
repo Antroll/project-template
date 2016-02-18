@@ -86,9 +86,7 @@ gulp.task('jshint', function() {
 });
 
 // main task
-gulp.task('serve', $.sync(gulp).sync([
-		['views', 'styles', 'scripts', 'move-sprite']
-	]), function() {
+gulp.task('serve', $.sync(gulp).sync([['views', 'styles', 'scripts', 'move-sprite']]), function() {
 	browserSync.init(browserSyncConfig);
 
 	// watch for changes
@@ -100,7 +98,7 @@ gulp.task('serve', $.sync(gulp).sync([
 	gulp.watch('app/scripts/**/*.js', ['scripts']);
 	gulp.watch('app/styles/**/*.scss', ['styles']);
 	gulp.watch('app/**/*.jade', ['views']);
-	gulp.watch('app/images/icons/*.*', ['move-sprite', 'styles']);
+	gulp.watch('app/sprite/icons/*.*', ['move-sprite', 'styles']);
 });
 
 gulp.task('watch', function() {
@@ -130,6 +128,6 @@ var filesToMove = [
 	'app/sprite/*.png'
 ];
 gulp.task('move-sprite', ['sprite'], function() {
-	gulp.src(filesToMove, { base: './' })
+	gulp.src(filesToMove, { base: './app/sprite/' })
 		.pipe(gulp.dest('dist/images/png/'));
 });
