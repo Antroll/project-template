@@ -1,6 +1,6 @@
 {
   "name": "project",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "*",
@@ -33,6 +33,7 @@
     "gulp-uglify": "*",
     "gulp-useref": "*",
     "gulp-util": "*",
+    "gulp.spritesmith": "^6.2.0",
     "jshint-stylish": "*",
     "main-bower-files": "*",
     "pleeease-filters": "*",

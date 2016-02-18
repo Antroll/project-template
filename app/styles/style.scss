@@ -1,7 +1,9 @@
 @import "mixins/mixins";
+@import "includes/vars";
 @import "includes/bootstrap";
 @import "includes/preloader";
-@import "includes/vars";
+
+// @import "../sprite/sprite";
 
 @import "includes/setup";
 @import "includes/helpers";

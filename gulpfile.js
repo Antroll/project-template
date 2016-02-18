@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
-var browserSyncConfig={
+var browserSyncConfig = {
 	reloadOnRestart: true,
 	notify: false,
 	port: 9000,
@@ -16,42 +16,44 @@ var browserSyncConfig={
 
 var jadeData = require('./data.json');
 
-gulp.task('views', function () {
+// compile jade
+gulp.task('views', function() {
 	return gulp.src(['app/tamplates/**/*.jade'])
 		.pipe($.plumber())
 
-		//only pass unchanged *main* files and *all* the partials
-		.pipe($.changed('dist', {extension: '.html'}))
+	//only pass unchanged *main* files and *all* the partials
+	.pipe($.changed('dist', { extension: '.html' }))
 
-		//filter out unchanged partials, but it only works when watching
-		.pipe($.if(browserSync.active, $.cached('jade')))
+	//filter out unchanged partials, but it only works when watching
+	.pipe($.if(browserSync.active, $.cached('jade')))
 
-		//find files that depend on the files that have changed
-		.pipe($.jadeInheritance({basedir: 'app/tamplates'}))
+	//find files that depend on the files that have changed
+	.pipe($.jadeInheritance({ basedir: 'app/tamplates' }))
 
-		//filter out partials (folders and files starting with "_" )
-		.pipe($.filter(function (file) {
-			return !/\_/.test(file.path) && !/^_/.test(file.relative);
-		}))
+	//filter out partials (folders and files starting with "_" )
+	.pipe($.filter(function(file) {
+		return !/\_/.test(file.path) && !/^_/.test(file.relative);
+	}))
 
-		.pipe($.jade({
+	.pipe($.jade({
 			locals: jadeData,
 			pretty: true
 		}))
 		.pipe($.beml())
-		.pipe($.fileInclude({basepath: 'dist'}))
+		.pipe($.fileInclude({ basepath: 'dist' }))
 		.pipe(gulp.dest('dist'))
-        .pipe(reload({stream: true}));
+		.pipe(reload({ stream: true }));
 });
 
-gulp.task('styles', function () {
+// compile sass
+gulp.task('styles', function() {
 
-		$.rubySass('app/styles', {
+	$.rubySass('app/styles', {
 			style: 'expanded',
 			precision: 10,
 			sourcemap: true
 		})
-		.on('error', function (err) {
+		.on('error', function(err) {
 			console.error('Error!', err.message);
 		})
 		.pipe($.postcss([
@@ -59,12 +61,13 @@ gulp.task('styles', function () {
 		]))
 		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest('dist/styles'))
-		.pipe(reload({stream: true}));
+		.pipe(reload({ stream: true }));
 });
 
-gulp.task('scripts', function () {
-	return gulp.src(['app/scripts/**/*.js','!app/scripts/modernizr/modernizr.custom.js'])
-		.pipe($.filter(function (file) {
+// view and check scripts
+gulp.task('scripts', function() {
+	return gulp.src(['app/scripts/**/*.js', '!app/scripts/modernizr/modernizr.custom.js'])
+		.pipe($.filter(function(file) {
 			return !/\_/.test(file.path) && !/^_/.test(file.relative);
 		}))
 		.pipe($.plumber())
@@ -74,7 +77,7 @@ gulp.task('scripts', function () {
 		.pipe(gulp.dest('dist/scripts'));
 });
 
-gulp.task('jshint', function () {
+gulp.task('jshint', function() {
 	return gulp.src('app/scripts/**/*.js')
 		.pipe($.plumber())
 		.pipe($.jshint())
@@ -82,43 +85,51 @@ gulp.task('jshint', function () {
 		.pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('wiredep', function () {
-	var wiredep = require('wiredep').stream;
+// main task
+gulp.task('serve', $.sync(gulp).sync([
+		['views', 'styles', 'scripts', 'move-sprite']
+	]), function() {
+	browserSync.init(browserSyncConfig);
 
-	gulp.src('app/styles/*.scss')
-		.pipe(wiredep())
-		.pipe(gulp.dest('app/styles'));
-
-	gulp.src('app/*.jade')
-		.pipe(wiredep({ignorePath: /^(\.\.\/)*\.\./}))
-		.pipe(gulp.dest('app'));
-});
-
-gulp.task('serve', $.sync(gulp).sync([['views', 'styles', 'scripts']]), function () {
-    browserSync.init(browserSyncConfig);
-
-    // watch for changes
-    gulp.watch([
-        'dist/scripts/**/*.js',
-        'app/images/**/*'
-    ]).on('change', reload);
+	// watch for changes
+	gulp.watch([
+		'dist/scripts/**/*.js',
+		'app/images/**/*'
+	]).on('change', reload);
 
 	gulp.watch('app/scripts/**/*.js', ['scripts']);
-    gulp.watch('app/styles/**/*.scss', ['styles']);
-    gulp.watch('app/**/*.jade', ['views']);
-    gulp.watch('app/images/svg/sprites/**/*', ['sprites']);
-    gulp.watch('app/images/svg/icons/**/*', ['icons']);
-    gulp.watch(['app/images/**/*.{jpg,png}',"!app/images/media/**/*","!app/images/favicons/**/*"], ['img-min']);
-    gulp.watch('bower.json', ['wiredep']);
+	gulp.watch('app/styles/**/*.scss', ['styles']);
+	gulp.watch('app/**/*.jade', ['views']);
+	gulp.watch('app/images/icons/*.*', ['move-sprite', 'styles']);
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
 	gulp.start('serve');
 });
 
+// min-css
 gulp.task('min-css', function() {
-  return gulp.src('dist/styles/*.css')
-    .pipe($.minifyCss({compatibility: 'ie8'}))
-    .pipe($.rename({suffix: '.min'}))
-    .pipe(gulp.dest('dist/styles'));
+	return gulp.src('dist/styles/*.css')
+		.pipe($.minifyCss({ compatibility: 'ie8' }))
+		.pipe($.rename({ suffix: '.min' }))
+		.pipe(gulp.dest('dist/styles'));
+});
+
+// sprite-gen
+gulp.task('sprite', function() {
+	var spriteData = gulp.src('app/sprite/icons/*.png').pipe($.spritesmith({
+		imgName: 'sprite.png',
+		cssName: 'sprite.scss',
+		padding: 20,
+		imgPath: '../images/png/sprite.png'
+	}));
+	return spriteData.pipe(gulp.dest('app/sprite/'));
+});
+// sprite move to dist
+var filesToMove = [
+	'app/sprite/*.png'
+];
+gulp.task('move-sprite', ['sprite'], function() {
+	gulp.src(filesToMove, { base: './' })
+		.pipe(gulp.dest('dist/images/png/'));
 });
