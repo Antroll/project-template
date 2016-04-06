@@ -35,6 +35,7 @@
     "gulp-util": "*",
     "gulp.spritesmith": "^6.2.0",
     "jshint-stylish": "*",
+    "postcss-flexibility": "^1.0.3",
     "main-bower-files": "*",
     "pleeease-filters": "*",
     "postcss-import": "*",

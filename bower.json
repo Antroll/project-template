@@ -2,9 +2,6 @@
 	"name": "project",
 	"private": true,
 	"dependencies": {
-		"fontawesome": "*",
-		"slick.js": "*",
-		"fancyBox": "*",
 		"jquery": "1.11.3"
 	}
 }
