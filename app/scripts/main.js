@@ -8,6 +8,7 @@ $(document).ready(function () {
 
 	// check window witdh
 	// if ($(window).width() < 960) {}
+	console.log('g');
 
 	// close on focus lost
 	$(document).click(function(e) {
@@ -28,13 +29,6 @@ $(window).load(function() {
 	});
 });
 
-
-function spoiler(selector, slideBody, time){
-	$(document).on('click', selector, function(){
-		$(this).toggleClass('active');
-		$(slideBody).slideToggle(time);
-	})
-}
 function linkScroller(){
 	var headerHeight = null;
 	if ($(window).width() >= 960) {

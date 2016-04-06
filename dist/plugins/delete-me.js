@@ -23,7 +23,7 @@ $(document).ready(function () {
 		'color': textColor,
 		'fontFamily': 'Arial, sans-serif',
 		'lineHeight': '20px',
-		'opacity': '0.2',
+		'opacity': '0.6',
 	});
 
 	for (var i = 0; i < arrPage.length; i++) {
@@ -65,7 +65,7 @@ $(document).ready(function () {
 	$('#pages2342').hover(function () {
 		$(this).css({ 'left': 0, 'opacity': '1' });
 	}, function () {
-		$(this).css({ 'left': -210, 'opacity': '0.2' });
+		$(this).css({ 'left': -210, 'opacity': '0.6' });
 	});
 	$('#pages2342 a').hover(function () {
 		$(this).css('color', 'orange');
