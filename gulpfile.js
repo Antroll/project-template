@@ -57,7 +57,8 @@ gulp.task('styles', function() {
             console.error('Error!', err.message);
         })
         .pipe($.postcss([
-            require('autoprefixer')
+            require('autoprefixer'),
+            require('postcss-flexibility')
         ]))
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('dist/styles'))
