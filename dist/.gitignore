@@ -1,7 +1,4 @@
 *.7z
 *.zip
 *.rar
-
-*.html
-scripts
-styles
+*.map
