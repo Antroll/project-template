@@ -1,0 +1,15 @@
+.text{
+	&-left{ text-align: left; }
+	&-right{ text-align: right; }
+	&-center{ text-align: center; }
+}
+.dib{display: inline-block;}
+.rel{position: relative;}
+.half{ width: 50%; }
+.verticalize{ @include verticalize; }
+.hr{
+	margin: 20px 0;
+	border: none;
+	height: 1px;
+	background: #a3a3a3;
+}

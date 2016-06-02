@@ -1,32 +1,28 @@
-include mixins/_mixins
-
 - var href = 'javascript:void(0)';
+- var wrapClass = null;
 block vars
-
+include mixins/_all-mixins
 doctype html
 html.no-js
 	head
 		meta(charset='utf-8')
-		title Site name
+		title Dev site
 		meta(name='description' content='')
 		meta(name='viewport' content='width=device-width, initial-scale=1')
 		link(rel="shortcut icon" href="favicon.ico" type="image/x-icon")
 		link(rel="icon" href="favicon.ico" type="image/x-icon")
-
+		//- styles
 		link(rel='stylesheet', href='styles/style.css')
 		block style
 		block script
-	body(style="min-height: 100vh;")
+	body
 		#preloader
 			#status
-
-		include blocks/_header
-
-		main
-			block content
-
-		include blocks/_footer
-
+		.wrap-site(class=wrapClass)
+			include blocks/_header
+			main.main
+				block content
+			include blocks/_footer
 		script(src="plugins/jquery/jquery.min.js")
 		script(src="plugins/delete-me.js")
 		script(src="plugins/flexibility.js")
@@ -35,5 +31,4 @@ html.no-js
 		script(src="plugins/phone-mask.js")
 		script(src="plugins/image-scale.min.js")
 		script(src="scripts/main.js")
-		//- script(src="scripts/app.min.js")
 		block scripts

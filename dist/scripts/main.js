@@ -9,7 +9,7 @@ $(document).ready(function () {
 	// if ($(window).width() < 960) {}
 
 	// close on focus lost
-	$(document).click(function(e) {
+	$(document).click(function (e) {
 		var $trg = $(e.target);
 		if (!$trg.closest(".parent-element").length && !$trg.hasClass('trigger-class') || $trg.hasClass('close-btn')) {
 			$('.block').removeClass('active');
@@ -20,7 +20,7 @@ $(document).ready(function () {
 	imgScale("img.scale");
 	wrapToScale('.scaling');
 });
-$(window).load(function() {
+$(window).load(function () {
 	// preloader
 	$('#status').fadeOut();
 	$('#preloader').delay(350).fadeOut('slow');
@@ -29,14 +29,14 @@ $(window).load(function() {
 	});
 });
 
-function linkScroller(){
+function linkScroller() {
 	var headerHeight = null;
 	if ($(window).width() >= 960) {
 		headerHeight = 83;
 	} else {
 		headerHeight = 0;
 	}
-	$('a[href*="#"]:not([href="#"])').click(function(e) {
+	$('a[href*="#"]:not([href="#"])').click(function (e) {
 		if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
 			var target = $(this.hash);
 			target = target[0] ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -54,18 +54,14 @@ function imgScale(selector) {
 		rescaleOnResize: true
 	});
 }
-function wrapToScale(className){
-	var
-	$items = $(className)
-	, count = $items.length
-	;
-	$items.each(function(){
+function wrapToScale(className) {
+	var $items = $(className),
+	    count = $items.length;
+	$items.each(function () {
 		if (!$(this).parent().hasClass('img-scaler__wrap')) {
-			$(this)
-			.wrap('<div class="img-scaler"></div>')
-			.wrap('<div class="img-scaler__wrap"></div>')
-			;
+			$(this).wrap('<div class="img-scaler"></div>').wrap('<div class="img-scaler__wrap"></div>');
 		}
-		if (!--count) imgScale(".img-scaler img");
+		if (! --count) imgScale(".img-scaler img");
 	});
 };
+//# sourceMappingURL=main.js.map

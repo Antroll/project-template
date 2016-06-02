@@ -1,0 +1,13 @@
+$pathFA: '../fonts/FontAwesome/';
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('#{$pathFA}fontawesome-webfont.eot?v=4.4.0');
+	src:
+	url('#{$pathFA}fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'),
+	url('#{$pathFA}fontawesome-webfont.woff2?v=4.4.0') format('woff2'),
+	url('#{$pathFA}fontawesome-webfont.woff?v=4.4.0') format('woff'),
+	url('#{$pathFA}fontawesome-webfont.ttf?v=4.4.0') format('truetype'),
+	url('#{$pathFA}fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -1,19 +1,31 @@
 /* setup */
-@font-face {
-	font-family: 'FontAwesome';
-	src: url('../fonts/FontAwesome/fontawesome-webfont.eot?v=4.4.0');
-	src: url('../fonts/FontAwesome/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'),
-	url('../fonts/FontAwesome/fontawesome-webfont.woff2?v=4.4.0') format('woff2'),
-	url('../fonts/FontAwesome/fontawesome-webfont.woff?v=4.4.0') format('woff'),
-	url('../fonts/FontAwesome/fontawesome-webfont.ttf?v=4.4.0') format('truetype'),
-	url('../fonts/FontAwesome/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
 *, *:after, *:before {
 	box-sizing: border-box;
 }
+
+// Футер книзу
+html,
+body {
+	height: 100%;
+}
+.wrap-site {
+	min-height: 100%;
+	min-width: 320px;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+.wrap-site .main {
+	padding-bottom: 100px + 30;
+}
+.wrap-site .footer {
+	position: absolute;
+	width: 100%;
+	height: 100px;
+	left: 0;
+	bottom: 0;
+}
+// .Футер книзу
 
 input:focus,textarea:focus, button:focus {
 	outline: none;

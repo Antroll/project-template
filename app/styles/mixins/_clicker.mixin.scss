@@ -3,9 +3,8 @@
 	&:active{ background-color: darken($color, 5%); }
 }
 @mixin link-clicker() {
+	cursor: pointer;
 	&:active{
-		position: relative;
-		top: 1px;
-		cursor: pointer;
+		transform: translateY(1px);
 	}
 }

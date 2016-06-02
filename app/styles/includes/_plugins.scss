@@ -1,0 +1,12 @@
+.img-scaler{
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 30%;
+	&__wrap{
+		position: absolute;
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+	}
+}

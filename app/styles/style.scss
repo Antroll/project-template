@@ -1,12 +1,15 @@
-@import "mixins/mixins";
+@import "mixins/all-mixins";
 @import "includes/vars";
 @import "includes/bootstrap";
 @import "includes/preloader";
 
 // @import "../sprite/sprite";
 
+@import "includes/fonts";
 @import "includes/setup";
-@import "includes/helpers";
+@import "includes/plugins";
+@import "includes/global-classes";
+@import "includes/shadow-classes";
 
 @import "typography";
 @import "layout";

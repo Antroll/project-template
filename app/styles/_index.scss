@@ -1,18 +1,22 @@
 /* index */
-.parent{
-	@include verticalize;
-	background: #BEBEBE;
-	height: 500px;
-}
 .block{
-	@include hui_tooltip(attr(data-tooltip), 'top', red);
-	display: inline-block;
-	vertical-align: middle;
+	@include hui_tooltip(attr(data-tooltip), 'top', grey);
+	border: 1px solid #DADADA;
 	width: 400px;
 	height: 100px;
-	background: white;
+	text-align: center;
+	.verticalize{
+		height: 100%;
+	}
 }
 .checkbox{
 	@include checkbox();
+}
+.img-block{
+	width: 200px;
+	display: inline-block;
+	.img-scaler{
+		padding-bottom: cp(1,1);
+	}
 }
 /* .index */

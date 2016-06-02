@@ -2,10 +2,10 @@ extends _layout
 block content
 	.container
 		h1 Hello world!
-		.parent
-			.block(data-tooltip="some block")
-				+checkbox(class="checkbox")
-		div(block="parent")
-			a(elem="link" href="#null" title="Ссылка") Ссылка
-		h2 bla bla
-		p
+		.text-center
+			.img-block
+				img.scaling(src="images/media/bob_minion.png", alt="")
+
+		.block(data-tooltip="checkbox demo")
+			.verticalize
+				+checkbox('label')(class="checkbox")
